@@ -1,3 +1,5 @@
+const { config } = require(".");
+
 module.exports = new class DocumentationGenerator {
 
 	config = {
@@ -39,7 +41,12 @@ module.exports = new class DocumentationGenerator {
 	}
 
 	generateDoc(routes) {
-
+		switch (this.config.tempalte) {
+			case 'dark':
+			default:
+				require("./template/1/generate")(routes, this.config);
+				break;
+		}
 	}
 
 }
