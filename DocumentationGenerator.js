@@ -4,11 +4,8 @@ module.exports = new class DocumentationGenerator {
 		"tempalte": "1"
 	}
 
-	setConfig(config) {
+	generate(routes, config = {}) {
 		this.mergeConfig(config);
-	}
-
-	generate(routes) {
 		var data = getRouteData(routes);
 		this.generateDoc(data);
 	}
