@@ -1,3 +1,5 @@
+const Route = require("@runtheons/router/Route");
+
 module.exports = new class DocumentationGenerator {
 
 	config = {
@@ -6,7 +8,7 @@ module.exports = new class DocumentationGenerator {
 
 	generate(routes, config = {}) {
 		this.mergeConfig(config);
-		var data = getRouteData(routes);
+		var data = this.getRouteData(routes);
 		this.generateDoc(data);
 	}
 
@@ -15,13 +17,13 @@ module.exports = new class DocumentationGenerator {
 	}
 
 	getRouteData(routes) {
-		routes.forEach(el => {
-			if (typeof el == "string") {
-				data = extractDataFromRoute(el);
-				data.file = el;
-				el = data;
+		Object.keys(routes).forEach(k => {
+			if (typeof routes[k] == "string") {
+				var data = this.extractDataFromRoute(routes[k]);
+				data.file = routes[k];
+				routes[k] = data;
 			} else {
-				el = getRouteData(el);
+				routes[k] = this.getRouteData(routes[k]);
 			}
 		});
 		return routes;
@@ -39,7 +41,7 @@ module.exports = new class DocumentationGenerator {
 		switch (this.config.tempalte) {
 			case 'dark':
 			default:
-				require("./template/1/generate")(routes, this.config);
+				require("./template/1/generate.js")(routes, this.config);
 				break;
 		}
 	}

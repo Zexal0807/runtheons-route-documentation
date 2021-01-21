@@ -5,8 +5,6 @@
 	"main": "index.js",
 	"scripts": {
 		"doc": "node index.js"
-
-
 	},
 	"repository": {
 		"type": "git",
@@ -17,5 +15,8 @@
 	"bugs": {
 		"url": "https://github.com/Zexal0807/runtheons-route-documentation/issues"
 	},
-	"homepage": "https://github.com/Zexal0807/runtheons-route-documentation#readme"
+	"homepage": "https://github.com/Zexal0807/runtheons-route-documentation#readme",
+	"dependencies": {
+		"@runtheons/router": "git+https://github.com/Zexal0807/runtheons-router.git"
+	}
 }
