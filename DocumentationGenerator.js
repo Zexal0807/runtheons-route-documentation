@@ -1,5 +1,3 @@
-const { config } = require(".");
-
 module.exports = new class DocumentationGenerator {
 
 	config = {
